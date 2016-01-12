@@ -2,12 +2,12 @@
     "manifest_version": 2,
     
     "name": "SUDI DEV TOOLS",
-    "description": "Sudi's Chrome Dev Tools Extension",
-    "version": "0.2",
+    "description": "This is Sudi's test dev extension",
+    "version": "0.1",
     "devtools_page": "devtools.html",
     
     "background": {
-        "scripts": ["js/jquery-2.2.0.min.js","js/event_page.js"],
+        "scripts": ["jquery-2.2.0.min.js","eventPage.js"],
         "persistent": false
     },
     
@@ -20,7 +20,8 @@
     "content_scripts": [
         {
             "matches": ["http://*/*"],
-            "js": ["js/jquery-2.2.0.min.js","js/content_script.js"],
+            "js": ["jquery-2.2.0.min.js","content_script.js"],
+            // "css": ["panel.css"],
             "run_at": "document_end",
             "all_frames": true
         }
@@ -29,6 +30,9 @@
     "permissions": [
         "activeTab",
         "cookies",
+        // "webRequest",
         "<all_urls>"
+        // "*://*.pardot.com"
+        // "https://ajax.googleapis.com/"
     ]
 }
