@@ -1,3 +1,33 @@
+var titles = [];
+
+$('h2.title').each(function(index) {
+    titles.push($(this).text());
+});
+
+// Send message TO background script FROM content_script
+chrome.runtime.sendMessage(titles);
+
+//chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
+//    alert(message);
+//});
+
+
+// Handle request from the background page
+//chrome.runtime.onMessage.addListener(function(message, sender) {
+//    var regex = /Mansoor/;
+//    
+//    if(regex.test(document.body.innerText)) {
+//        chrome.runtime.sendMessage({name: 'regex_return'}, function(regMsg) {
+//            return('We found: ' + regex);
+//        });
+//    }
+//});
+
+
+
+
+
+
 // THIS WORKS!!!
 
 //var regex = /Mansoor/;
@@ -17,15 +47,17 @@
 //});
 
 
-// This goes into the panel.js file
-chrome.runtime.onConnect.addListener(function(port) {
-    console.assert(port.name == 'cookies');
-    port.onMessage.addListener(function(msg) {
-        if(msg.scrape_cookies == 'active') {
-            port.postMessage({intro: 'Hello cookies!'});
-        }
-    });
-});
+//// This goes into the panel.js file
+//chrome.runtime.onConnect.addListener(function(port) {
+//    // console.assert(port.name == 'cookies');
+//    if(port.name !== 'test') return;
+//    port.onMessage.addListener(function(msg) {
+//        if(msg.scrape_cookies == 'active') {
+//            // port.postMessage({intro: 'Hello cookies!'});
+//            console.log('COOKIES!');
+//        }
+//    });
+//});
 
 
 

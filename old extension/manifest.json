@@ -1,7 +1,7 @@
 {
     "manifest_version": 2,
     
-    "name": "SUDI DEV TOOLS",
+    "name": "SUDI DEV TOOLS EXPERIMENTAL",
     "description": "This is Sudi's test dev extension",
     "version": "0.1",
     "devtools_page": "devtools.html",
@@ -19,7 +19,7 @@
     
     "content_scripts": [
         {
-            "matches": ["http://*/*"],
+            "matches": ["http://*/*", "https://*/*"],
             "js": ["jquery-2.2.0.min.js","content_script.js"],
             // "css": ["panel.css"],
             "run_at": "document_end",
@@ -28,7 +28,7 @@
     ],
     
     "permissions": [
-        "activeTab",
+        "tabs",
         "cookies",
         // "webRequest",
         "<all_urls>"
