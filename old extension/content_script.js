@@ -5,7 +5,14 @@ $('h2.title').each(function(index) {
 });
 
 // Send message TO background script FROM content_script
-chrome.runtime.sendMessage(titles);
+//chrome.runtime.sendMessage(titles);
+
+// Receive message from background script and return 'titles'
+chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
+    if(message.scrape == 'yes') {
+        sendResponse({domInfo: titles});
+    }
+});
 
 //chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
 //    alert(message);

@@ -5,13 +5,16 @@
 //    }
 //});
 
-var myMsg;
 
 // Receive message FROM content_script; no message sent back
-chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
-    myMsg = sender.tab.id + ': ' + message[1];
-    console.log(myMsg);
-});
+//chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
+//    myMsg = sender.tab.id + ': ' + message[1];
+//    console.log(myMsg);
+//});
+
+
+
+var myMsg;
 
 // Open 'port' with devtools.js page
 chrome.runtime.onConnect.addListener(function(port) {
@@ -19,11 +22,21 @@ chrome.runtime.onConnect.addListener(function(port) {
     
     // Receive 'message' from devtools.js
     port.onMessage.addListener(function(message) {
-        console.log(message);
-    })
-    
-    // Send value of 'myMsg' to devtools.
-    port.postMessage(myMsg);
+        if(message.init == 'start_scrape'){
+            chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+                // console.log(tabs);
+                chrome.tabs.sendMessage(tabs[0].id, {scrape: 'yes'}, function(response) {
+                    //console.log(response.domScrape);
+                    myMsg = response.domInfo;
+                    
+                    // Send value of 'myMsg' to devtools.
+                    port.postMessage(myMsg);
+                });
+            });
+        }else{
+            console.log('this is not the message you are looking for');
+        }
+    });
 });
 
 

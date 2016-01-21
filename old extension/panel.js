@@ -1,9 +1,14 @@
 function myFunction(message) {
-    $('#example').text(message);
+    //alert(message);
+    //var splitMsg = message.split(',');
+    //alert(message.length);
+    for(i=0; i < message.length; ++i) {
+        $('#example').append('<li>' + message[i] + '</li>');
+    }
 }
 
 $('.btn-scrape').on('click', function() {
-    respond('Mansoor and his SUPER Message');
+    respond('start_scrape');
 });
 
 // Receive a message from devtools.js via function call
