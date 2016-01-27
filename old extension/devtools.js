@@ -13,7 +13,7 @@ chrome.devtools.panels.create(
         // Open a 'port' connection with eventPage.js
         var port = chrome.runtime.connect({name: 'devtools'});
             port.onMessage.addListener(function(myMessage) {
-                //alert(myMessage);
+                
                 if(_window) {
                     // if the panel window is open, then call myFunction in panel.js
                     _window.myFunction(myMessage);
@@ -31,7 +31,6 @@ chrome.devtools.panels.create(
             var myMsg;
             while (myMsg = data.shift()) {
                 _window.myFunction(myMsg);
-                //alert(myMsg);
             }
             
             // Create 'respond' method for the panel; can now be called from panel.js

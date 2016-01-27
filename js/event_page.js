@@ -8,6 +8,13 @@ chrome.runtime.onConnect.addListener(function(port) {
     port.onMessage.addListener(function(message) {
         if(message.init == 'start_scrape'){
             chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+                // Test to see if cookies are definied here; it WORKS
+                if(chrome.cookies){
+                    alert('cookies');
+                }else{
+                    alert('no cookies');
+                }
+                
                 chrome.tabs.sendMessage(tabs[0].id, {scrape: 'yes'}, function(response) {
                     myMsg = response.domInfo;
                     
@@ -20,3 +27,4 @@ chrome.runtime.onConnect.addListener(function(port) {
         }
     });
 });
+

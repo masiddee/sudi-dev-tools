@@ -5,6 +5,7 @@
     "description": "Sudi's Chrome Dev Tools Extension",
     "version": "0.2",
     "devtools_page": "devtools.html",
+    "incognito": "spanning",
     
     "background": {
         "scripts": ["js/jquery-2.2.0.min.js","js/event_page.js"],

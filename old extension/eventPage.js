@@ -24,10 +24,11 @@ chrome.runtime.onConnect.addListener(function(port) {
     port.onMessage.addListener(function(message) {
         if(message.init == 'start_scrape'){
             chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-                // console.log(tabs);
+                
                 chrome.tabs.sendMessage(tabs[0].id, {scrape: 'yes'}, function(response) {
-                    //console.log(response.domScrape);
+                    
                     myMsg = response.domInfo;
+                    console.log(myMsg);
                     
                     // Send value of 'myMsg' to devtools.
                     port.postMessage(myMsg);
