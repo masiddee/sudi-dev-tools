@@ -1,0 +1,34 @@
+.conatiner-fluid.small {
+    width: 500px;
+}
+
+a.btn {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+h1 {
+    font-size: 18px;
+}
+
+table {
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+table th {
+    background: #ededed;
+    text-align: center;
+}
+
+table th, table td {
+    padding: 5px;
+}
+
+table td {
+    text-align: left;
+}
+
+table td:last-child {
+    text-align: right;
+}

@@ -7,34 +7,36 @@
         <title>Panels Page</title>
         <!-- Bootstrap -->
         <link href="css/bootstrap.min.css" rel="stylesheet">
-        <style>
-            body {}
-        </style>
+        <link href="css/custom.css" rel="stylesheet">
     </head>
     <body>
-        <div id="status">
-            <h1>This is the Panel for Sudi's Chrome Developer Tool</h1>
-            <a href="#" class="btn btn-primary btn-scrape">Click Me to Scrape Page</a>
-            <table id="page-forms">
-                <tr>
-                    <th>Forms</th>
-                </tr>
-            </table>
-            <table id="page-account-id">
-                <tr>
-                    <th>Account ID</th>
-                </tr>
-            </table>
-            <table id="page-campaign-id">
-                <tr>
-                    <th>Campaign ID</th>
-                </tr>
-            </table>
-            <table id="page-cookies">
-                <tr>
-                    <th>Cookies</th>
-                </tr>
-            </table>
+        <div id="status" class="container-fluid small">
+           <div class="row">
+               <div class="col-xs-12">
+                    <h1>This is the Panel for Sudi's Chrome Developer Tool</h1>
+                    <a href="#" class="btn btn-primary btn-scrape">Click Me to Scrape Page</a>
+                    <table id="page-forms">
+                        <tr>
+                            <th colspan="2">Forms</th>
+                        </tr>
+                    </table>
+                    <table id="page-account-id">
+                        <tr>
+                            <th colspan="2">Account ID</th>
+                        </tr>
+                    </table>
+                    <table id="page-campaign-id">
+                        <tr>
+                            <th colspan="2">Campaign ID</th>
+                        </tr>
+                    </table>
+                    <table id="page-cookies">
+                        <tr>
+                            <th colspan="2">Cookies</th>
+                        </tr>
+                    </table>
+               </div>
+           </div>
         </div>
         
         <script src="js/jquery-2.2.0.min.js"></script>
