@@ -8,15 +8,27 @@ chrome.runtime.onConnect.addListener(function(port) {
     port.onMessage.addListener(function(message) {
         if(message.init == 'start_scrape'){
             chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-                // Test to see if cookies are definied here; it WORKS
-                if(chrome.cookies){
-                    alert('cookies');
-                }else{
-                    alert('no cookies');
-                }
                 
                 chrome.tabs.sendMessage(tabs[0].id, {scrape: 'yes'}, function(response) {
+                    
+                    chrome.cookies.getAll({"url":tabs[0].url}, function(cookies) {
+                        var cookieNames = [];
+                        var cookieValues = [];
+                        
+                        for(var i in cookies){
+                            if(cookies[i].name.match(/visitor_id+\d*/g)){
+                                //console.log(cookies[i]);
+                                cookieNames.push(cookies[i].name);
+                                cookieValues.push(cookies[i].value);
+                            }
+                        }
+                        response.domInfo.cookieNames = cookieNames;
+                        response.domInfo.cookieValues = cookieValues;
+                    });
+                    
                     myMsg = response.domInfo;
+                    
+                    console.log(myMsg);
                     
                     // Send value of 'myMsg' to devtools.
                     port.postMessage(myMsg);

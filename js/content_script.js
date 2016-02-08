@@ -28,9 +28,6 @@ chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
             pageObject.picid = pageScript.match(/piCId\s=\s.(\d+).;|piCId\s=.(\d+).;|piCId=.(\d+).;/g);
             // Append pageForms
             pageObject.forms = pageFormAction;
-            //console.log(pageObject.piaid);
-            //console.log(pageObject.picid[1]);
-            //console.log(pageObject.forms);
 
         sendResponse({domInfo: pageObject});
     } // end if message.scrape
