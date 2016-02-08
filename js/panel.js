@@ -4,11 +4,13 @@ function myFunction(message) {
     }
     
     for(i=0; i < message.piaid.length; ++i) {
-        $('#page-account-id').append('<tr><td colspan="2">' + message.piaid[i] + '</td></tr>');
+        var piaid = String(message.piaid[i]).split("'")[1];
+        $('#page-account-id').append('<tr><td colspan="2">' + piaid + '</td></tr>');
     }
     
     for(i=0; i < message.picid.length; ++i) {
-        $('#page-campaign-id').append('<tr><td colspan="2">' + message.picid[i] + '</td></tr>');
+        var picid = String(message.picid[i]).split("'")[1];
+        $('#page-campaign-id').append('<tr><td colspan="2">' + picid + '</td></tr>');
     }
     
     for(i=0; i < message.cookieNames.length; ++i) {

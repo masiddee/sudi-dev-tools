@@ -24,14 +24,14 @@ chrome.runtime.onConnect.addListener(function(port) {
                         }
                         response.domInfo.cookieNames = cookieNames;
                         response.domInfo.cookieValues = cookieValues;
+                        
+                        myMsg = response.domInfo;
+                    
+                        console.log(myMsg);
+
+                        // Send value of 'myMsg' to devtools.
+                        port.postMessage(myMsg);
                     });
-                    
-                    myMsg = response.domInfo;
-                    
-                    console.log(myMsg);
-                    
-                    // Send value of 'myMsg' to devtools.
-                    port.postMessage(myMsg);
                 });
             });
         }else{
