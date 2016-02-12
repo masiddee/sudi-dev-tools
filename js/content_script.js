@@ -1,6 +1,6 @@
-// Receive message from background script and return 'titles'
+// Receive message from background script
 chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
-    if(message.scrape == 'yes') {
+    if(message.scrape == 'page') {
 
         // Grab all of the javascript loaded in the page itself, and store it here
         var pageScript;
@@ -30,5 +30,18 @@ chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
             pageObject.forms = pageFormAction;
 
         sendResponse({domInfo: pageObject});
-    } // end if message.scrape
+    } // end if message.scrape == page
+    
+    
+    if(message.scrape == 'fh') {
+        
+        var tabUrl = window.location.href;
+        alert(tabUrl.substr(0,41));
+        if(tabUrl.substr(0,41) == 'https://pi.pardot.com/formHandler/read/id/'){
+            alert('this is the page you want');
+        }else{
+            alert('This is not the Page');
+        }
+        
+    } // end if message.scrape == fh
 });

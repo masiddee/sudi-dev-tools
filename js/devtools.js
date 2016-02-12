@@ -10,8 +10,8 @@ chrome.devtools.panels.create(
         var port = chrome.runtime.connect({name : 'devtools'});
             port.onMessage.addListener(function(myMessage) {
                 if(_window) {
-                    // if the panel window is open, then call myFunction in panel.js
-                    _window.myFunction(myMessage);
+                    // if the panel window is open, then call printInfo in panel.js
+                    _window.printInfo(myMessage);
                 }else{
                     // if the panel window is NOT open, then store these values in the 'data' array to be shown later
                     data.push(myMessage);
@@ -24,7 +24,7 @@ chrome.devtools.panels.create(
             
             var myMsg;
             while(myMsg = data.shift()) {
-                _window.myFunction(myMsg);
+                _window.printInfo(myMsg);
             }
             
             // Create 'respond' method for the panel; can now be called from panel.js

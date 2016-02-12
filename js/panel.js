@@ -1,4 +1,15 @@
-function myFunction(message) {
+// This function strictly clears all rows after the th row of each table
+function clearPanel(){
+    $('#page-forms tr:nth-child(1n+2)').empty();
+    $('#page-account-id tr:nth-child(1n+2)').empty();
+    $('#page-campaign-id tr:nth-child(1n+2)').empty();
+    $('#page-cookies tr:nth-child(1n+2)').empty();
+}
+
+function printInfo(message) {
+    
+    clearPanel();
+    
     for(i=0; i < message.forms.length; ++i) {
         $('#page-forms').append('<tr><td><span class="td-title">Form Action Attribute:</span></td><td>' + message.forms[i] + '</td></tr>');
     }
@@ -29,5 +40,10 @@ function myFunction(message) {
 
 $('.btn-scrape').on('click', function() {
     respond('start_scrape');
+    //$(this).addClass('disabled');
+});
+
+$('.btn-fh').on('click', function() {
+    respond('start_fh');
     $(this).addClass('disabled');
 });
