@@ -9,7 +9,7 @@ chrome.runtime.onConnect.addListener(function(port) {
         if(message.init == 'start_scrape'){
             chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
                 
-                chrome.tabs.sendMessage(tabs[0].id, {scrape: 'yes'}, function(response) {
+                chrome.tabs.sendMessage(tabs[0].id, {scrape: 'page'}, function(response) {
                     
                     chrome.cookies.getAll({"url":tabs[0].url}, function(cookies) {
                         var cookieNames = [];
@@ -32,6 +32,13 @@ chrome.runtime.onConnect.addListener(function(port) {
                         // Send value of 'myMsg' to devtools.
                         port.postMessage(myMsg);
                     });
+                });
+            });
+        }else if(message.init == 'start_fh'){
+            
+            chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+                chrome.tabs.sendMessage(tabs[0].id, {scrape: 'fh'}, function(response) {
+                    
                 });
             });
         }else{
