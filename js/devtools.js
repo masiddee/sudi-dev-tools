@@ -28,9 +28,9 @@ chrome.devtools.panels.create(
             }
             
             // Create 'respond' method for the panel; can now be called from panel.js
-            _window.respond = function(pMsg) {
+            _window.respond = function(msgTitle, msgBody) {
                 // Send value received from panel.js to eventPage.js
-                port.postMessage({init: pMsg});
+                port.postMessage({init: msgTitle, body: msgBody});
             }
         });
     }

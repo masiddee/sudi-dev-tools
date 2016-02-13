@@ -32,15 +32,23 @@ function printInfo(message) {
     
     for(i=0; i < message.cookieNames.length; ++i) {
         var cookieSubstr = String(message.cookieNames[i]).substr(10); // Grabs the Account Id from cookie name and appends it to the URL
-        var cookieLinkUrl = 'https://pi.pardot.com/visits/index/visitor_id/' + message.cookieValues[i] + '?aid=' + cookieSubstr;
-        var cookieMsg = '<tr><td><span class="td-title">' + message.cookieNames[i] + '</span></td><td>' + message.cookieValues[i] + '&nbsp;&nbsp;<a href="' + cookieLinkUrl + '" target="_blank">Visitor Link</a></td></tr>'
+        var cookieLink = '<a href="https://pi.pardot.com/visits/index/visitor_id/' + message.cookieValues[i] + '?aid=' + cookieSubstr + '" target="_blank">Visitor Link</a>';
+        var removeCookieLink = '<a href="#" class="remove-cookie" data-cookie="' + message.cookieNames[i] + '" data-cookie-url="' + message.cookieUrls[i] + '">Delete this cookie</a>';
+        var cookieMsg = '<tr><td><span class="td-title">' + message.cookieNames[i] + '</span></td><td>' + message.cookieValues[i] + '&nbsp;&nbsp;' + cookieLink + '&nbsp;&nbsp;' + removeCookieLink + '</td></tr>'
         $('#page-cookies').append(cookieMsg);
     }
 }
 
 $('.btn-scrape').on('click', function() {
     respond('start_scrape');
-    //$(this).addClass('disabled');
+});
+
+$('#page-cookies').on('click', 'a.remove-cookie', function(e) {
+    e.preventDefault();
+    var linkData = {'cookie':$(this).data('cookie'), 'cookieUrl':$(this).data('cookie-url')};
+
+    respond('del_cookie',linkData);
+    $(this).parent().parent().empty();
 });
 
 $('.btn-fh').on('click', function() {
