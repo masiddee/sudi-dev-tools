@@ -18,7 +18,7 @@ chrome.devtools.panels.create(
                 }
             });
         
-        panel.onShown.addListener(function tmp(panelWindow) {
+        panel.onShown.addListener(function(panelWindow) {
             //panel.onShown.removeListener(tmp); // Makes this only run once
             _window = panelWindow;
             

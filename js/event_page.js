@@ -37,6 +37,8 @@ chrome.runtime.onConnect.addListener(function(port) {
                         response.domInfo.cookieUrls = cookieUrls;
                         
                         myMsg = response.domInfo;
+                        
+                        //console.log(myMsg);
 
                         // Send value of 'myMsg' to devtools.
                         port.postMessage(myMsg);
@@ -48,7 +50,7 @@ chrome.runtime.onConnect.addListener(function(port) {
             
             chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
                 chrome.tabs.sendMessage(tabs[0].id, {scrape: 'fh'}, function(response) {
-                    
+                    port.postMessage(response);
                 });
             });
             
