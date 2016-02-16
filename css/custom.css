@@ -1,5 +1,5 @@
-.conatiner-fluid.small {
-    width: 500px;
+.small {
+    position: relative;
 }
 
 a.btn {
@@ -27,8 +27,31 @@ table th, table td {
 
 table td {
     text-align: left;
+    font-size: 12px;
 }
 
-table td:last-child {
-    text-align: right;
+table td:first-child {
+    width: 20%;
+}
+
+table .td-title {
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.url-input {
+    width: 90%;
+    padding: 5px;
+    color: #888;
+    font-size: 11px;
+    border: none;
+    border-bottom: 1px dotted #cecece;
+}
+
+.url-input:hover {
+    border: 1px dotted #e0e0e0;
+}
+
+.url-input:focus {
+    outline:0;
 }

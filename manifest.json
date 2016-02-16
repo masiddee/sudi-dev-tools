@@ -20,7 +20,7 @@
     
     "content_scripts": [
         {
-            "matches": ["http://*/*"],
+            "matches": ["http://*/*","https://*/*"],
             "js": ["js/jquery-2.2.0.min.js","js/content_script.js"],
             "run_at": "document_end",
             "all_frames": true
