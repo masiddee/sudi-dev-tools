@@ -74,7 +74,7 @@ chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
     //        });
 
             sendResponse({domInfo: pageObject});
-        } // end if tabUrl 1
+        } // end if tabUrl
     } // end if message.scrape == page
     
     
