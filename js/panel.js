@@ -23,7 +23,7 @@ function printInfo(message) {
             var piaid = String(message.piaid[i]).split("'")[1]; // Extract the AID number 
             var piaidAct = Number(piaid)-1000; // Get the actual Account ID value to append to the URL
             var piaidActLink = '&nbsp;&nbsp;<a href="https://pi.pardot.com?aid=' + piaidAct + '" target="_blank">Account Link</a>'; // Build the Account link
-            var piaidMsg = '<tr><td><span class="td-title">Pardot Account ID:</span></td><td>' + piaid + piaidActLink + '</td></tr>'
+            var piaidMsg = '<tr><td><span class="td-title">Pardot Account ID:</span></td><td>' + piaidAct + piaidActLink + '</td></tr>'
             $('#page-account-id').append(piaidMsg);
         }
 
@@ -31,7 +31,7 @@ function printInfo(message) {
             var picid = String(message.picid[i]).split("'")[1]; // Extract the CID number 
             var picidCampaign = Number(picid)-1000; // Get the actual Campaign ID value to append to the URL
             var picidCampaignLink = '&nbsp;&nbsp;<a href="https://pi.pardot.com/campaign/read/id/' + picidCampaign + '" target="_blank">Campaign Link</a>'; // Build the Campaign link
-            var picidMsg = '<tr><td><span class="td-title">Pardot Campaign ID:</span></td><td>' + picid + picidCampaignLink  + '</td></tr>'
+            var picidMsg = '<tr><td><span class="td-title">Pardot Campaign ID:</span></td><td>' + picidCampaign + picidCampaignLink  + '</td></tr>'
             $('#page-campaign-id').append(picidMsg);
         }
 
