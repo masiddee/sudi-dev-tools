@@ -47,31 +47,6 @@ chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
             pageObject.formAction = pageFormAction;
             pageObject.formFields = pageFormFields;
             pageObject.formIframe = pageFormIframe;
-            //pageObject.forms = {};
-            //pageObject.forms.fields = [];
-            //pageObject.forms.fields = {};
-
-    //        $('form').each(function(index) {
-    //            console.log(index);
-    //            if(self == top){
-    //                pageObject.forms.iframe = false;
-    //            }else if(parent == top){
-    //                pageObject.forms.iframe = true;
-    //            }
-    //            
-    //            pageObject.forms.attribute = $(this).attr('action');
-    //            
-    //            $('input,textarea,select').each(function(index) {
-    //                var nameAttr = $(this).attr('name');
-    //                if(!nameAttr){
-    //                    console.log('There is no Name attribute for this field');
-    //                }else{
-    //                    pageObject.forms.fields.push(nameAttr);
-    //                    //pageObject.forms.fields.names = nameAttr;
-    //                }
-    //            });
-    //            console.log(pageObject);
-    //        });
 
             sendResponse({domInfo: pageObject});
         } // end if tabUrl
@@ -111,9 +86,6 @@ chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
             }
             
             sendResponse({fhInfo: fullFormHandler});
-        }else{
-            //alert('This is not the page you want. You need to be on a Pardot Form Handler page. Try again!');
-        } // end if tabUrl 2
-        
+        }        
     } // end if message.scrape == fh
 });

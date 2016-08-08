@@ -3,7 +3,7 @@
     
     "name": "Sudi PD Developer Tool",
     "description": "Perform various troubleshooting tasks useful to a Pardot Support Representative.",
-    "version": "1.0",
+    "version": "2.0",
     "devtools_page": "devtools.html",
     "incognito": "spanning",
     "icons": {"16": "icon16.png",
